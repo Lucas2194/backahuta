@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sala Weselna Bącka Huta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:        #C4963C;
+      --gold-light:  #D4AF37;
+      --gold-pale:   #EDD698;
+      --gold-dark:   #8B6620;
+      --cream:       #FAF6F0;
+      --cream-dark:  #F2EBE0;
+      --dark:        #1C140A;
+      --dark-mid:    #3B2A14;
+      --text:        #2C1F0E;
+      --text-muted:  #6B5740;
+      --white:       #FFFFFF;
+      --rose:        #C0687A;
+      --shadow-gold: 0 4px 24px rgba(196,150,60,0.18);
+      --shadow-soft: 0 8px 40px rgba(44,31,14,0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── Typography ────────────────────────────────────────────────── */
+    .font-script   { font-family: 'Great Vibes', cursive; }
+    .font-serif    { font-family: 'Cormorant Infant', serif; }
+    .font-sans     { font-family: 'Montserrat', sans-serif; }
+
+    h1, h2, h3 { font-family: 'Cormorant Infant', serif; font-weight: 600; line-height: 1.2; }
+
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Infant', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-divider {
+      width: 64px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.5rem auto;
+    }
+
+    .section-text {
+      font-family: 'Cormorant Infant', serif;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ─── Utility ────────────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .text-center { text-align: center; }
+
+    section {
+      padding: 6rem 0;
+    }
+
+    /* ─── Buttons ─────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.28s ease;
+      border: none;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(196,150,60,0.35);
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196,150,60,0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--dark);
+    }
+    .btn-white:hover {
+      background: var(--gold-pale);
+      transform: translateY(-2px);
+    }
+
+    /* ─── Navbar ──────────────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 0;
+      transition: all 0.4s ease;
+    }
+
+    #navbar.scrolled {
+      background: rgba(28,20,10,0.96);
+      backdrop-filter: blur(12px);
+      padding: 0.8rem 0;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .nav-logo-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: var(--gold-light);
+    }
+    .nav-logo-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-top: -4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.25s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-contact {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Mobile nav */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(28,20,10,0.97);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 2rem;
+      color: var(--white);
+      transition: color 0.2s;
+    }
+    .nav-mobile a:hover { color: var(--gold); }
+
+    /* ─── Hero ─────────────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/img/tlo.jpg');
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+    }
+
+    #hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(28,20,10,0.55) 0%,
+        rgba(28,20,10,0.45) 50%,
+        rgba(28,20,10,0.72) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      border: 1px solid rgba(196,150,60,0.4);
+      padding: 0.45rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3rem, 10vw, 6.5rem);
+      color: var(--gold-light);
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Infant', serif;
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-line-bar {
+      width: 48px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .hero-line-bar.right {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .hero-line-text {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      font-style: italic;
+    }
+
+    .hero-desc {
+      font-family: 'Cormorant Infant', serif;
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      color: rgba(255,255,255,0.85);
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .hero-scroll-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .hero-scroll-icon {
+      width: 28px; height: 44px;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      border-radius: 14px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 7px;
+    }
+    .hero-scroll-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: scrollDot 2s ease-in-out infinite;
+    }
+    @keyframes scrollDot {
+      0%   { transform: translateY(0); opacity: 1; }
+      80%  { transform: translateY(14px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 0; }
+    }
+
+    /* ─── Stats Bar ────────────────────────────────────────────────────── */
+    #stats {
+      background: var(--dark);
+      padding: 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(196,150,60,0.15);
+      border-bottom: 1px solid rgba(196,150,60,0.15);
+    }
+    .stat-item {
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border-right: 1px solid rgba(196,150,60,0.15);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.3rem;
+    }
+
+    /* ─── O Nas ────────────────────────────────────────────────────────── */
+    #o-nas {
+      background: var(--cream);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .about-img-deco {
+      position: absolute;
+      bottom: -1.5rem; right: -1.5rem;
+      width: 55%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border: 4px solid var(--cream);
+      border-radius: 2px;
+    }
+    .about-gold-frame {
+      position: absolute;
+      top: 1.5rem; left: 1.5rem;
+      right: -3rem; bottom: -3rem;
+      border: 1px solid rgba(196,150,60,0.25);
+      pointer-events: none;
+      border-radius: 2px;
+    }
+    .about-text { padding-left: 1rem; }
+    .about-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .about-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .about-list-icon {
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-pale), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-list-icon svg { width: 18px; height: 18px; stroke: var(--dark); fill: none; }
+    .about-list-body h4 {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .about-list-body p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    /* ─── Galeria Sali ─────────────────────────────────────────────────── */
+    #galeria-sali {
+      background: var(--dark);
+      color: var(--white);
+    }
+    #galeria-sali .section-title { color: var(--white); }
+    #galeria-sali .section-text  { color: rgba(255,255,255,0.65); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 0.6rem;
+      margin-top: 3rem;
+    }
+    .gallery-item {
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-item.tall { grid-row: span 2; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+      min-height: 200px;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(28,20,10,0.7) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(196,150,60,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+    }
+    .gallery-overlay-icon svg { width: 16px; height: 16px; stroke: white; fill: none; }
+
+    /* ─── Podwórko ─────────────────────────────────────────────────────── */
+    #podworko {
+      background: var(--cream-dark);
+    }
+    .yard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .yard-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .yard-item:first-child {
+      grid-column: span 2;
+    }
+    .yard-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .yard-item:hover img { transform: scale(1.05); }
+
+    /* ─── Słodki stół ──────────────────────────────────────────────────── */
+    #slodki {
+      background: linear-gradient(135deg, #FFF8F0 0%, #FAF3E8 100%);
+    }
+    .sweet-intro {
+      font-family: 'Cormorant Infant', serif;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.9;
+      text-align: center;
+    }
+    .sweet-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.8rem;
+    }
+    .sweet-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .sweet-item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .sweet-item:hover img { transform: scale(1.07); }
+    .sweet-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(139,102,32,0.75) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .sweet-item:hover .sweet-item-overlay { opacity: 1; }
+
+    .sweet-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── Oferta ──────────────────────────────────────────────────────── */
+    #oferta {
+      background: var(--dark);
+      color: var(--white);
+    }
+    #oferta .section-title { color: var(--white); }
+    #oferta .section-text  { color: rgba(255,255,255,0.65); }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .offer-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(196,150,60,0.18);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .offer-card:hover {
+      background: rgba(196,150,60,0.06);
+      border-color: rgba(196,150,60,0.4);
+      transform: translateY(-4px);
+    }
+    .offer-card-icon {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(196,150,60,0.2), rgba(196,150,60,0.05));
+      border: 1px solid rgba(196,150,60,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .offer-card-icon svg { width: 26px; height: 26px; stroke: var(--gold-light); fill: none; }
+    .offer-card h3 {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .offer-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .offer-card-num {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: var(--gold);
+      display: block;
+      margin-top: 1rem;
+    }
+
+    /* ─── Kontakt ─────────────────────────────────────────────────────── */
+    #kontakt {
+      background: var(--cream);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info h3 {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 2rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-item-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-pale), rgba(196,150,60,0.2));
+      border: 1px solid rgba(196,150,60,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-item-icon svg { width: 20px; height: 20px; stroke: var(--gold-dark); fill: none; }
+    .contact-item-body label {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+    .contact-item-body a,
+    .contact-item-body span {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 1.25rem;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .contact-item-body a:hover { color: var(--gold); }
+
+    .contact-form {
+      background: var(--white);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-soft);
+      border-top: 3px solid var(--gold);
+    }
+    .contact-form h3 {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 1.6rem;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+    .contact-form p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #E8E0D5;
+      background: var(--cream);
+      font-family: 'Cormorant Infant', serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 2px;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ─── Footer ─────────────────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+    .footer-logo {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .footer-tagline {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 2rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 1.5rem;
+      margin-top: 1rem;
+    }
+    .footer-gold {
+      width: 48px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 2rem;
+    }
+
+    /* ─── Lightbox ────────────────────────────────────────────────────── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.94);
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.active { display: flex; }
+    .lb-img-wrap {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    #lb-img {
+      max-width: 90vw;
+      max-height: 86vh;
+      object-fit: contain;
+      border: 1px solid rgba(196,150,60,0.2);
+    }
+    .lb-close {
+      position: fixed;
+      top: 1.5rem; right: 1.5rem;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .lb-close:hover { background: rgba(196,150,60,0.4); }
+    .lb-close svg { width: 20px; height: 20px; stroke: white; fill: none; }
+    .lb-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(196,150,60,0.3);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .lb-arrow:hover { background: rgba(196,150,60,0.3); }
+    .lb-arrow svg { width: 22px; height: 22px; stroke: white; fill: none; }
+    .lb-prev { left: 1.5rem; }
+    .lb-next { right: 1.5rem; }
+    .lb-counter {
+      position: fixed;
+      bottom: 1.5rem; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ─── Scroll animations ───────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item.wide { grid-column: span 1; }
+      .gallery-item.tall { grid-row: span 1; }
+      .gallery-item img { min-height: 220px; }
+      .sweet-grid { grid-template-columns: repeat(3, 1fr); }
+      .sweet-grid .sweet-item:nth-child(4),
+      .sweet-grid .sweet-item:nth-child(5) { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 4rem 0; }
+      .nav-links, .nav-contact { display: none; }
+      .nav-hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-img-deco { display: none; }
+      .about-gold-frame { display: none; }
+      .about-text { padding-left: 0; }
+      .yard-grid { grid-template-columns: 1fr; }
+      .yard-item:first-child { grid-column: span 1; }
+      .yard-item img { height: 240px; }
+      .sweet-grid { grid-template-columns: repeat(2, 1fr); }
+      .sweet-grid .sweet-item:nth-child(5) { display: none; }
+      .sweet-grid .sweet-item:nth-child(4) { display: block; }
+      .offer-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(196,150,60,0.15); }
+      .stat-item:last-child { border-bottom: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+    }
+
+    @media (max-width: 480px) {
+      .sweet-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item img { min-height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Bącka Huta">
+        <span class="nav-logo-script">Bącka Huta</span>
+        <span class="nav-logo-sub">Sala Weselna &amp; Bankietowa</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#o-nas">O nas</a></li>
+        <li><a href="#galeria-sali">Galeria</a></li>
+        <li><a href="#podworko">Ogród</a></li>
+        <li><a href="#slodki">Słodki stół</a></li>
+        <li><a href="#oferta">Oferta</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+
+      <a href="tel:696858295" class="nav-contact" aria-label="Zadzwoń do nas">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/>
+        </svg>
+        696 858 295
+      </a>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav overlay -->
+<div class="nav-mobile" id="mobileNav" role="dialog" aria-modal="true" aria-label="Menu nawigacyjne">
+  <a href="#o-nas"         onclick="closeMobileNav()">O nas</a>
+  <a href="#galeria-sali"  onclick="closeMobileNav()">Galeria sali</a>
+  <a href="#podworko"      onclick="closeMobileNav()">Ogród</a>
+  <a href="#slodki"        onclick="closeMobileNav()">Słodki stół</a>
+  <a href="#oferta"        onclick="closeMobileNav()">Oferta</a>
+  <a href="#kontakt"       onclick="closeMobileNav()">Kontakt</a>
+  <a href="tel:696858295"  onclick="closeMobileNav()" style="color:var(--gold-light);font-size:1.4rem;font-family:'Montserrat',sans-serif;font-weight:600;">696 858 295</a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section id="hero">
+  <div id="hero-bg"></div>
+  <div id="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Sala Weselna &amp; Bankietowa</div>
+    <span class="hero-script">Bącka Huta</span>
+    <h1 class="hero-title">Miejsce Wyjątkowych Chwil</h1>
+
+    <div class="hero-line">
+      <div class="hero-line-bar"></div>
+      <span class="hero-line-text">Wesela &bull; Bankiety &bull; Uroczystości</span>
+      <div class="hero-line-bar right"></div>
+    </div>
+
+    <p class="hero-desc">
+      Miejsce, gdzie ważne wydarzenia i najważniejsze chwile nabierają blasku.
+      Zadbamy, by każde przyjęcie stało się niezapomnianym wspomnieniem.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#kontakt" class="btn btn-gold">Zapytaj o termin</a>
+      <a href="#galeria-sali" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5);color:white;">Zobacz galerię</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" onclick="document.getElementById('stats').scrollIntoView({behavior:'smooth'})" aria-label="Przewiń w dół">
+    <span class="hero-scroll-text">Przewiń</span>
+    <div class="hero-scroll-icon">
+      <div class="hero-scroll-dot"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STATS
+═══════════════════════════════════════════ -->
+<div id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal delay-1">
+        <div class="stat-num">150</div>
+        <div class="stat-label">Miejsc na sali</div>
+      </div>
+      <div class="stat-item reveal delay-2">
+        <div class="stat-num" style="font-size:2.5rem;padding-top:0.4rem;">Pokoje</div>
+        <div class="stat-label">Gościnne na miejscu</div>
+      </div>
+      <div class="stat-item reveal delay-3">
+        <div class="stat-num" style="font-size:2.2rem;padding-top:0.6rem;">Wesela</div>
+        <div class="stat-label">Bankiety &amp; Uroczystości</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     O NAS
+═══════════════════════════════════════════ -->
+<section id="o-nas">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal-left">
+        <img src="assets/img/sala1.jpg" alt="Wnętrze sali weselnej Bącka Huta" class="about-img-main" loading="lazy">
+        <img src="assets/img/sala2.jpg" alt="Dekoracje sali bankietowej" class="about-img-deco" loading="lazy">
+        <div class="about-gold-frame"></div>
+      </div>
+
+      <div class="about-text reveal-right">
+        <span class="section-label">Nasza historia</span>
+        <span class="section-script">O nas</span>
+        <h2 class="section-title">Idealne miejsce na każdą uroczystość</h2>
+        <div class="section-divider" style="margin:1.5rem 0;"></div>
+
+        <p class="section-text" style="text-align:left;margin:0 0 1.5rem;">
+          Sala bankietowa Bącka Huta to miejsce, gdzie ważne wydarzenia, uroczystości oraz
+          najważniejsze chwile nabierają blasku. Zadbamy o to, aby małe spotkania w rodzinnym
+          gronie, wesela, bankiety oraz huczne przyjęcia stały się niezapomnianymi chwilami
+          na długie lata.
+        </p>
+        <p class="section-text" style="text-align:left;margin:0 0 2rem;">
+          Idealna lokalizacja, wyjątkowy wystrój, bogata karta menu sprosta wymaganiom
+          każdego naszego gościa.
+        </p>
+
+        <div class="about-list">
+          <div class="about-list-item">
+            <div class="about-list-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div class="about-list-body">
+              <h4>Do 150 gości</h4>
+              <p>Przestronna sala pomieści nawet największe przyjęcia i bankiety</p>
+            </div>
+          </div>
+          <div class="about-list-item">
+            <div class="about-list-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="about-list-body">
+              <h4>Pokoje gościnne</h4>
+              <p>Komfortowy nocleg dla gości weselnych bezpośrednio na miejscu</p>
+            </div>
+          </div>
+          <div class="about-list-item">
+            <div class="about-list-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="about-list-body">
+              <h4>Bogata karta menu</h4>
+              <p>Wykwintne dania dopasowane do wymagań każdego gościa</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#kontakt" class="btn btn-gold" style="margin-top:2.5rem;">Skontaktuj się z nami</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     GALERIA SALI
+═══════════════════════════════════════════ -->
+<section id="galeria-sali">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label" style="color:var(--gold-pale);">Wnętrza</span>
+      <span class="section-script">Galeria sali</span>
+      <h2 class="section-title">Poznaj nasze wnętrza</h2>
+      <div class="section-divider"></div>
+      <p class="section-text">Elegancki wystrój i starannie dobrane detale tworzą wyjątkową atmosferę,
+        która zachwyci każdego gościa.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item wide tall" onclick="openLightbox(galleryImages, 0)" role="button" tabindex="0" aria-label="Zdjęcie sali 1" onkeydown="if(event.key==='Enter')openLightbox(galleryImages,0)">
+        <img src="assets/img/sala1.jpg" alt="Sala weselna Bącka Huta - widok główny" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(galleryImages, 1)" role="button" tabindex="0" aria-label="Zdjęcie sali 2" onkeydown="if(event.key==='Enter')openLightbox(galleryImages,1)">
+        <img src="assets/img/sala2.jpg" alt="Sala bankietowa - dekoracja stołów" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(galleryImages, 2)" role="button" tabindex="0" aria-label="Zdjęcie sali 3" onkeydown="if(event.key==='Enter')openLightbox(galleryImages,2)">
+        <img src="assets/img/sala3.jpg" alt="Sala weselna - oświetlenie" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(galleryImages, 3)" role="button" tabindex="0" aria-label="Zdjęcie sali 4" onkeydown="if(event.key==='Enter')openLightbox(galleryImages,3)">
+        <img src="assets/img/sala4.jpg" alt="Bankiet - aranżacja wnętrza" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(galleryImages, 4)" role="button" tabindex="0" aria-label="Zdjęcie sali 5" onkeydown="if(event.key==='Enter')openLightbox(galleryImages,4)">
+        <img src="assets/img/sala5.jpg" alt="Sala weselna - eleganckie wnętrze" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(galleryImages, 5)" role="button" tabindex="0" aria-label="Zdjęcie sali 6" onkeydown="if(event.key==='Enter')openLightbox(galleryImages,5)">
+        <img src="assets/img/sala6.jpg" alt="Sala bankietowa - przygotowanie do przyjęcia" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(galleryImages, 6)" role="button" tabindex="0" aria-label="Zdjęcie sali 7" onkeydown="if(event.key==='Enter')openLightbox(galleryImages,6)">
+        <img src="assets/img/sala7.jpg" alt="Sala weselna - detal dekoracji" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(galleryImages, 7)" role="button" tabindex="0" aria-label="Zdjęcie sali 8" onkeydown="if(event.key==='Enter')openLightbox(galleryImages,7)">
+        <img src="assets/img/sala8.jpg" alt="Sala bankietowa - atmosfera wieczoru" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PODWÓRKO / OGRÓD
+═══════════════════════════════════════════ -->
+<section id="podworko">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">Otoczenie</span>
+      <span class="section-script">Ogród i podwórko</span>
+      <h2 class="section-title">Piękne otoczenie sali</h2>
+      <div class="section-divider"></div>
+      <p class="section-text">Malowicze podwórko i okolica tworzą wyjątkową oprawę dla Waszych uroczystości i pamiątkowych zdjęć.</p>
+    </div>
+
+    <div class="yard-grid">
+      <div class="yard-item reveal-left" onclick="openLightbox(yardImages, 0)" role="button" tabindex="0" aria-label="Zdjęcie podwórka 1" onkeydown="if(event.key==='Enter')openLightbox(yardImages,0)">
+        <img src="assets/img/podworko1.jpg" alt="Podwórko przy sali weselnej Bącka Huta" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+      <div class="yard-item reveal-right" onclick="openLightbox(yardImages, 1)" role="button" tabindex="0" aria-label="Zdjęcie podwórka 2" onkeydown="if(event.key==='Enter')openLightbox(yardImages,1)">
+        <img src="assets/img/podworko2.jpg" alt="Ogród wokół sali bankietowej" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+      <div class="yard-item reveal reveal delay-3" onclick="openLightbox(yardImages, 2)" role="button" tabindex="0" aria-label="Zdjęcie podwórka 3" onkeydown="if(event.key==='Enter')openLightbox(yardImages,2)">
+        <img src="assets/img/podworko3.jpg" alt="Teren przy sali weselnej" loading="lazy">
+        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SŁODKI STÓŁ
+═══════════════════════════════════════════ -->
+<section id="slodki">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="sweet-badge">Nowość w ofercie</div>
+      <span class="section-label">Zamówienia na wynos</span>
+      <span class="section-script">Słodki stół</span>
+      <h2 class="section-title">Desery, torty i słodkości</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <p class="sweet-intro reveal">
+      Drodzy Klienci! Z radością ogłaszamy, że po wielu zapytaniach z Waszej strony,
+      wprowadzamy możliwość składania zamówień na nasze pyszne <strong>deserki, słodkie stoły,
+      torty oraz wyjątkowe ciasta</strong> — teraz również poza salę!
+      Zapraszamy do kontaktu w sprawie zamówień.
+    </p>
+
+    <div class="sweet-grid">
+      <div class="sweet-item reveal delay-1" onclick="openLightbox(sweetImages, 0)" role="button" tabindex="0" aria-label="Słodkości 1" onkeydown="if(event.key==='Enter')openLightbox(sweetImages,0)">
+        <img src="assets/img/slodki1.jpg" alt="Słodki stół - desery i ciasta" loading="lazy">
+        <div class="sweet-item-overlay"></div>
+      </div>
+      <div class="sweet-item reveal delay-2" onclick="openLightbox(sweetImages, 1)" role="button" tabindex="0" aria-label="Słodkości 2" onkeydown="if(event.key==='Enter')openLightbox(sweetImages,1)">
+        <img src="assets/img/slodki2.jpg" alt="Tort weselny na zamówienie" loading="lazy">
+        <div class="sweet-item-overlay"></div>
+      </div>
+      <div class="sweet-item reveal delay-3" onclick="openLightbox(sweetImages, 2)" role="button" tabindex="0" aria-label="Słodkości 3" onkeydown="if(event.key==='Enter')openLightbox(sweetImages,2)">
+        <img src="assets/img/slodki3.jpg" alt="Desery i słodki stół" loading="lazy">
+        <div class="sweet-item-overlay"></div>
+      </div>
+      <div class="sweet-item reveal delay-4" onclick="openLightbox(sweetImages, 3)" role="button" tabindex="0" aria-label="Słodkości 4" onkeydown="if(event.key==='Enter')openLightbox(sweetImages,3)">
+        <img src="assets/img/slodki4.jpg" alt="Ciasta weselne na wynos" loading="lazy">
+        <div class="sweet-item-overlay"></div>
+      </div>
+      <div class="sweet-item reveal delay-5" onclick="openLightbox(sweetImages, 4)" role="button" tabindex="0" aria-label="Słodkości 5" onkeydown="if(event.key==='Enter')openLightbox(sweetImages,4)">
+        <img src="assets/img/slodki5.jpg" alt="Słodkości na każdą okazję" loading="lazy">
+        <div class="sweet-item-overlay"></div>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top:3rem;">
+      <p class="section-text" style="margin-bottom:1.8rem;">
+        Chcesz zamówić słodkości? Skontaktuj się z nami — chętnie doradzimy i przygotujemy ofertę dopasowaną do Twoich potrzeb.
+      </p>
+      <a href="#kontakt" class="btn btn-gold">Zamów słodkości</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     OFERTA
+═══════════════════════════════════════════ -->
+<section id="oferta">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label" style="color:var(--gold-pale);">Co oferujemy</span>
+      <span class="section-script">Nasza oferta</span>
+      <h2 class="section-title">Wszystko czego potrzebujesz</h2>
+      <div class="section-divider"></div>
+      <p class="section-text">Zapewniamy kompleksową obsługę każdej uroczystości — od pierwszego spotkania aż po ostatni taniec.</p>
+    </div>
+
+    <div class="offer-grid">
+      <div class="offer-card reveal delay-1">
+        <div class="offer-card-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3>Wesela</h3>
+        <p>Organizujemy wymarzone wesela w eleganckim wnętrzu z pełną obsługą kelnerską i bogatą kartą menu.</p>
+        <span class="offer-card-num">150</span>
+        <small style="font-family:'Montserrat',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);">miejsc na sali</small>
+      </div>
+
+      <div class="offer-card reveal delay-2">
+        <div class="offer-card-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Bankiety &amp; Przyjęcia</h3>
+        <p>Rodzinne spotkania, jubileusze, chrzciny, komunie — każde przyjęcie traktujemy z wyjątkową starannością.</p>
+        <span class="offer-card-num" style="font-size:2rem;">Każda</span>
+        <small style="font-family:'Montserrat',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);">uroczystość</small>
+      </div>
+
+      <div class="offer-card reveal delay-3">
+        <div class="offer-card-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Pokoje gościnne</h3>
+        <p>Komfortowe pokoje gościnne bezpośrednio na miejscu — wygoda dla gości weselnych bez potrzeby szukania noclegu.</p>
+        <span class="offer-card-num" style="font-size:1.8rem;">Komfort</span>
+        <small style="font-family:'Montserrat',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);">noclegowy</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     KONTAKT
+═══════════════════════════════════════════ -->
+<section id="kontakt">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:4rem;">
+      <span class="section-label">Zarezerwuj termin</span>
+      <span class="section-script">Kontakt</span>
+      <h2 class="section-title">Skontaktuj się z nami</h2>
+      <div class="section-divider"></div>
+      <p class="section-text">Chętnie odpowiemy na wszelkie pytania i pomożemy zaplanować Waszą wyjątkową uroczystość.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <h3>Dane kontaktowe</h3>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+          </div>
+          <div class="contact-item-body">
+            <label>Telefon</label>
+            <a href="tel:696858295">696 858 295</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-item-body">
+            <label>E-mail</label>
+            <a href="mailto:dorota-ropela@wp.pl">dorota-ropela@wp.pl</a>
+          </div>
+        </div>
+
+        <div style="margin-top:3rem;">
+          <p class="section-text" style="text-align:left;font-size:1rem;margin:0 0 1.2rem;">
+            Jesteśmy do Twojej dyspozycji. Zadzwoń lub napisz — odpowiemy tak szybko jak to możliwe!
+          </p>
+          <a href="tel:696858295" class="btn btn-gold" style="margin-right:1rem;">
+            Zadzwoń teraz
+          </a>
+          <a href="mailto:dorota-ropela@wp.pl" class="btn btn-outline">
+            Napisz e-mail
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="contact-form">
+          <h3>Wyślij wiadomość</h3>
+          <p>Wypełnij formularz — odezwiemy się tak szybko jak to możliwe.</p>
+
+          <form onsubmit="handleFormSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Imię i nazwisko</label>
+                <input type="text" id="name" name="name" required autocomplete="name" placeholder="Jan Kowalski">
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="600 000 000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Adres e-mail</label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="jan@example.pl">
+            </div>
+            <div class="form-group">
+              <label for="event">Rodzaj uroczystości</label>
+              <select id="event" name="event">
+                <option value="">Wybierz rodzaj...</option>
+                <option>Wesele</option>
+                <option>Bankiet</option>
+                <option>Urodziny / Jubileusz</option>
+                <option>Chrzciny / Komunia</option>
+                <option>Spotkanie rodzinne</option>
+                <option>Zamówienie słodkości</option>
+                <option>Inne</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Wiadomość</label>
+              <textarea id="message" name="message" placeholder="Opisz swoją uroczystość — przewidywana liczba gości, planowana data..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold" style="width:100%;">Wyślij wiadomość</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <span class="footer-logo">Bącka Huta</span>
+  <p class="footer-tagline">Sala Weselna &amp; Bankietowa</p>
+  <div class="footer-gold"></div>
+
+  <nav class="footer-links" aria-label="Stopka nawigacja">
+    <a href="#o-nas">O nas</a>
+    <a href="#galeria-sali">Galeria</a>
+    <a href="#podworko">Ogród</a>
+    <a href="#slodki">Słodki stół</a>
+    <a href="#oferta">Oferta</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
+  <p class="footer-copy">
+    &copy; 2026 Sala Weselna Bącka Huta &nbsp;&bull;&nbsp;
+    <a href="tel:696858295" style="color:var(--gold);transition:color 0.2s;">696 858 295</a> &nbsp;&bull;&nbsp;
+    <a href="mailto:dorota-ropela@wp.pl" style="color:var(--gold);transition:color 0.2s;">dorota-ropela@wp.pl</a>
+  </p>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     LIGHTBOX
+═══════════════════════════════════════════ -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Podgląd zdjęcia">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Zamknij podgląd">
+    <svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lb-arrow lb-prev" onclick="lbNavigate(-1)" aria-label="Poprzednie zdjęcie">
+    <svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <div class="lb-img-wrap">
+    <img id="lb-img" src="" alt="Powiększone zdjęcie">
+  </div>
+  <button class="lb-arrow lb-next" onclick="lbNavigate(1)" aria-label="Następne zdjęcie">
+    <svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script>
+  /* ── Image arrays ── */
+  const galleryImages = [
+    { src: 'assets/img/sala1.jpg', alt: 'Sala weselna Bącka Huta' },
+    { src: 'assets/img/sala2.jpg', alt: 'Dekoracja stołów' },
+    { src: 'assets/img/sala3.jpg', alt: 'Oświetlenie sali' },
+    { src: 'assets/img/sala4.jpg', alt: 'Aranżacja wnętrza' },
+    { src: 'assets/img/sala5.jpg', alt: 'Eleganckie wnętrze' },
+    { src: 'assets/img/sala6.jpg', alt: 'Przygotowanie do przyjęcia' },
+    { src: 'assets/img/sala7.jpg', alt: 'Detal dekoracji' },
+    { src: 'assets/img/sala8.jpg', alt: 'Atmosfera wieczoru' },
+  ];
+  const yardImages = [
+    { src: 'assets/img/podworko1.jpg', alt: 'Podwórko przy sali' },
+    { src: 'assets/img/podworko2.jpg', alt: 'Ogród wokół sali' },
+    { src: 'assets/img/podworko3.jpg', alt: 'Teren przy sali weselnej' },
+  ];
+  const sweetImages = [
+    { src: 'assets/img/slodki1.jpg', alt: 'Desery i ciasta' },
+    { src: 'assets/img/slodki2.jpg', alt: 'Tort weselny' },
+    { src: 'assets/img/slodki3.jpg', alt: 'Słodki stół' },
+    { src: 'assets/img/slodki4.jpg', alt: 'Ciasta na wynos' },
+    { src: 'assets/img/slodki5.jpg', alt: 'Słodkości' },
+  ];
+
+  /* ── Lightbox ── */
+  let currentImages = [];
+  let currentIndex  = 0;
+
+  function openLightbox(images, index) {
+    currentImages = images;
+    currentIndex  = index;
+    renderLightbox();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function lbNavigate(dir) {
+    currentIndex = (currentIndex + dir + currentImages.length) % currentImages.length;
+    renderLightbox();
+  }
+
+  function renderLightbox() {
+    const img  = document.getElementById('lb-img');
+    const info = currentImages[currentIndex];
+    img.src = info.src;
+    img.alt = info.alt;
+    document.getElementById('lb-counter').textContent =
+      (currentIndex + 1) + ' / ' + currentImages.length;
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('lightbox').classList.contains('active')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  lbNavigate(-1);
+    if (e.key === 'ArrowRight') lbNavigate(1);
+  });
+
+  /* ── Navbar scroll ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 60) navbar.classList.add('scrolled');
+    else                     navbar.classList.remove('scrolled');
+  }, { passive: true });
+
+  /* ── Mobile nav ── */
+  const hamburger  = document.getElementById('hamburger');
+  const mobileNav  = document.getElementById('mobileNav');
+
+  hamburger.addEventListener('click', function() {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(function(el) { revealObs.observe(el); });
+
+  /* ── Parallax hero (reduced-motion safe) ── */
+  const heroBg = document.getElementById('hero-bg');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced) {
+    window.addEventListener('scroll', function() {
+      const y = window.scrollY;
+      if (y < window.innerHeight) {
+        heroBg.style.transform = 'translateY(' + (y * 0.35) + 'px)';
+      }
+    }, { passive: true });
+  }
+
+  /* ── Form submit ── */
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('[type="submit"]');
+    const orig = btn.textContent;
+    btn.textContent = 'Wysłano!';
+    btn.style.background = 'linear-gradient(135deg, #6B8F4E, #5A7A3F)';
+    btn.disabled = true;
+    setTimeout(function() {
+      btn.textContent = orig;
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3500);
+  }
+</script>
+
+</body>
+</html>
